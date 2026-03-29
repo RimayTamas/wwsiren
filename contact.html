@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WWsiren — Contact</title>
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:#0a0e0a;--bg2:#0d120d;--bg3:#111611;
+      --green:#00ff41;--green-dim:#00aa2b;--green-dark:#004d13;
+      --red:#ff2020;--text:#c8d8c8;--muted:#556655;
+      --bright:#e8f0e8;--border:#1a2a1a;
+    }
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{background:var(--bg);color:var(--text);font-family:'Share Tech Mono',monospace;font-size:0.8rem;line-height:1.85;}
+    nav{border-bottom:1px solid var(--border);padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center;background:var(--bg2);position:sticky;top:0;z-index:100;}
+    .nav-logo{color:var(--bright);font-size:1.1rem;text-decoration:none;}
+    .nav-logo span{color:var(--red);}
+    .nav-back{color:var(--green-dim);text-decoration:none;font-size:0.72rem;letter-spacing:0.1em;}
+    .nav-back:hover{color:var(--green);}
+    .hero{padding:5rem 2rem 4rem;text-align:center;background:radial-gradient(ellipse at 50% 0%,rgba(0,255,65,0.05) 0%,transparent 60%);border-bottom:1px solid var(--border);}
+    .hero-eyebrow{color:var(--green-dim);font-size:0.65rem;letter-spacing:0.4em;margin-bottom:1.5rem;}
+    .hero h1{color:var(--bright);font-size:2rem;letter-spacing:0.06em;line-height:1.2;margin-bottom:1rem;}
+    .hero h1 em{color:var(--green);font-style:normal;}
+    .hero-sub{color:var(--muted);font-size:0.76rem;max-width:520px;margin:0 auto;line-height:1.9;}
+    .container{max-width:680px;margin:0 auto;padding:5rem 2rem 7rem;}
+    .opening{background:rgba(0,255,65,0.04);border:1px solid var(--green-dark);border-left:3px solid var(--green);padding:2rem;margin-bottom:3rem;font-size:0.8rem;color:var(--bright);line-height:2.1;}
+    .opening .key{color:var(--green);}
+    .topics{margin-bottom:3rem;}
+    .topic-row{display:flex;align-items:flex-start;gap:1.25rem;padding:1.25rem 0;border-bottom:1px solid var(--border);}
+    .topic-row:first-child{border-top:1px solid var(--border);}
+    .topic-tag{color:var(--green-dim);font-size:0.65rem;letter-spacing:0.15em;flex-shrink:0;width:160px;padding-top:0.1rem;}
+    .topic-content{}
+    .topic-title{color:var(--bright);font-size:0.78rem;margin-bottom:0.3rem;}
+    .topic-desc{color:var(--muted);font-size:0.72rem;line-height:1.75;}
+    .email-block{background:var(--bg2);border:1px solid var(--border);padding:2.5rem;text-align:center;margin-bottom:3rem;}
+    .email-label{color:var(--muted);font-size:0.65rem;letter-spacing:0.2em;margin-bottom:1rem;display:block;}
+    .email-address{color:var(--green);font-size:1.1rem;letter-spacing:0.05em;display:block;margin-bottom:1rem;}
+    .email-note{color:var(--muted);font-size:0.7rem;line-height:1.8;max-width:400px;margin:0 auto;}
+    .psy-note{background:rgba(0,255,65,0.02);border-left:2px solid var(--green-dark);padding:1rem 1.25rem;margin-bottom:3rem;font-size:0.74rem;color:var(--muted);line-height:1.8;font-style:italic;}
+    .psy-note cite{color:var(--green-dark);font-style:normal;font-size:0.67rem;display:block;margin-top:0.4rem;}
+    .faq-item{border-bottom:1px solid var(--border);padding:1.25rem 0;}
+    .faq-item:first-of-type{border-top:1px solid var(--border);}
+    .faq-q{color:var(--bright);font-size:0.78rem;margin-bottom:0.4rem;}
+    .faq-a{color:var(--muted);font-size:0.73rem;line-height:1.8;}
+    .faq-a a{color:var(--green-dim);}
+    h2{color:var(--green);font-size:0.82rem;letter-spacing:0.2em;margin-bottom:1.5rem;padding-bottom:0.5rem;border-bottom:1px solid var(--border);}
+    a{color:var(--green-dim);text-decoration:none;}
+    a:hover{color:var(--green);}
+    .footnote{margin-top:5rem;padding-top:2rem;border-top:1px solid var(--border);color:var(--muted);font-size:0.67rem;line-height:1.9;}
+    footer{border-top:1px solid var(--border);padding:2rem;text-align:center;color:var(--muted);font-size:0.7rem;}
+    footer a{color:var(--green-dim);text-decoration:none;margin:0 0.6rem;}
+    footer a:hover{color:var(--green);}
+    @media(max-width:600px){
+      .topic-row{flex-direction:column;gap:0.5rem;}
+      .topic-tag{width:auto;}
+      .hero h1{font-size:1.4rem;}
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">WW<span>SIREN</span></a>
+  <a href="/" class="nav-back">← BACK TO BASE</a>
+</nav>
+
+<div class="hero">
+  <div class="hero-eyebrow">// CONTACT //</div>
+  <h1>One Address.<br><em>Everything Goes There.</em></h1>
+  <p class="hero-sub">No ticket system. No category maze. One email address, one inbox, real people.</p>
+</div>
+
+<div class="container">
+
+  <div class="opening">
+    Research on service trust consistently identifies a single variable that predicts long-term subscriber loyalty above all others: <span class="key">the belief that a real human is reachable.</span><br><br>
+    Not a chatbot. Not a form that routes to nowhere. A person who reads what you write and responds. That is what this page is. One email address. We read everything that arrives.
+  </div>
+
+  <div class="topics">
+    <div class="topic-row">
+      <span class="topic-tag">// CANCEL</span>
+      <div class="topic-content">
+        <div class="topic-title">Cancel your subscription</div>
+        <div class="topic-desc">Subscriptions are managed through Stripe. You can cancel directly via your bank or card provider, or through Stripe's customer portal. Access continues until the end of your current billing period.</div>
+      </div>
+    </div>
+    <div class="topic-row">
+      <span class="topic-tag">// DATA</span>
+      <div class="topic-content">
+        <div class="topic-title">Privacy and data requests</div>
+        <div class="topic-desc">Access, correct, or delete your personal data. Subject: "Privacy Rights Request." We fulfill within 30 days. Full details in our <a href="/privacy.html">Privacy Policy</a>.</div>
+      </div>
+    </div>
+    <div class="topic-row">
+      <span class="topic-tag">// TECHNICAL</span>
+      <div class="topic-content">
+        <div class="topic-title">Not receiving alerts</div>
+        <div class="topic-desc">Check spam first — alerts occasionally get filtered. If missing for more than 24 hours, email us with your registered address. Subject: "Missing Alerts."</div>
+      </div>
+    </div>
+    <div class="topic-row">
+      <span class="topic-tag">// EVERYTHING ELSE</span>
+      <div class="topic-content">
+        <div class="topic-title">Press, feedback, questions</div>
+        <div class="topic-desc">Media inquiries, partnership proposals, feedback on the science, general questions — write to us. We read it all.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="email-block">
+    <span class="email-label">// THE ONLY ADDRESS YOU NEED //</span>
+    <a href="/cdn-cgi/l/email-protection#84edeae2ebc4eff4e3e8ebe6e5e8e9e1e0ede5aae7ebe9" class="email-address"><span class="__cf_email__" data-cfemail="167f787079567d66717a7974777a7b73727f773875797b">[email&#160;protected]</span></a>
+    <div class="email-note">Include a clear subject line and your registered email address if your message relates to an existing subscription. That is all we need.</div>
+  </div>
+
+  <div class="psy-note">
+    Psychological research on service recovery — what happens after a problem occurs — consistently shows that the speed and humanity of the response matters more than the problem itself. A subscriber who reaches a real person and gets a real answer becomes more loyal than one who never had a problem at all. We take every message seriously for exactly this reason.
+    <cite>— Zeithaml, V.A., Berry, L.L. &amp; Parasuraman, A. (1996). The Behavioral Consequences of Service Quality. Journal of Marketing, 60(2).</cite>
+  </div>
+
+  <h2>COMMON QUESTIONS</h2>
+
+  <div class="faq-item">
+    <div class="faq-q">How many alerts should I expect?</div>
+    <div class="faq-a">Zero to two per week, on average. This is intentional. Alert fatigue research demonstrates that high-frequency systems produce worse response behavior than sparse, high-confidence ones. When you receive a WWsiren alert, it means something genuinely significant has been classified — not that our system is filling your inbox.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q">Is WWsiren an official emergency service?</div>
+    <div class="faq-a">No. WWsiren is a private subscription service. It is not affiliated with any government, military, or emergency organization. Always verify significant information through official channels before taking action. The full scope of the service is described in <a href="/terms.html">our Terms</a>.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q">How does the AI decide what to alert me about?</div>
+    <div class="faq-a">Events are evaluated against cascade potential, geographic scope, response-time sensitivity, and verification signal density. Only events meeting threshold criteria across multiple dimensions trigger alerts. The complete methodology is in <a href="/about.html">The Science</a>.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q">What happens to my data if I cancel?</div>
+    <div class="faq-a">Your personal data is permanently deleted within 30 days of cancellation. Complete details in our <a href="/privacy.html">Privacy Policy</a>.</div>
+  </div>
+
+  <div class="footnote">
+    <p>KP Global Media Solutions LLP &nbsp;|&nbsp; 361–5307 Victoria Drive, Vancouver, BC, V5P 3V6, Canada</p>
+    <br>
+    <p>© 2026 KP Global Media Solutions LLP &nbsp;|&nbsp; <a href="/privacy.html">Privacy Policy</a> &nbsp;|&nbsp; <a href="/terms.html">Terms of Service</a> &nbsp;|&nbsp; <a href="/about.html">The Science</a></p>
+  </div>
+
+</div>
+
+<footer>
+  <div>WW<span style="color:var(--red)">SIREN</span> &nbsp;// &nbsp;<a href="/">Home</a><a href="/about.html">the science</a><a href="/privacy.html">privacy</a><a href="/terms.html">te

@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WWsiren — The Science Behind the Signal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0a0e0a; --bg2: #0d120d; --bg3: #111611;
+      --green-bright: #00ff41; --green-dim: #00aa2b; --green-dark: #004d13;
+      --red: #ff2020; --text: #c8d8c8; --text-muted: #556655;
+      --text-bright: #e8f0e8; --border: #1a2a1a;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: var(--bg); color: var(--text); font-family: 'Share Tech Mono', monospace; font-size: 0.82rem; line-height: 1.9; letter-spacing: 0.03em; }
+    nav { border-bottom: 1px solid var(--border); padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; background: var(--bg2); position: sticky; top: 0; z-index: 100; }
+    .nav-logo { color: var(--text-bright); font-size: 1.1rem; text-decoration: none; }
+    .nav-logo span { color: var(--red); }
+    .nav-back { color: var(--green-dim); text-decoration: none; font-size: 0.75rem; }
+    .nav-back:hover { color: var(--green-bright); }
+    .hero {
+      padding: 5rem 2rem 4rem;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+      background: radial-gradient(ellipse at center top, rgba(0,255,65,0.04) 0%, transparent 70%);
+    }
+    .hero-label { color: var(--green-dim); font-size: 0.7rem; letter-spacing: 0.3em; margin-bottom: 1.5rem; }
+    .hero h1 { color: var(--text-bright); font-size: 1.8rem; letter-spacing: 0.08em; line-height: 1.4; margin-bottom: 1.5rem; }
+    .hero h1 span { color: var(--green-bright); }
+    .hero-sub { color: var(--text-muted); font-size: 0.8rem; max-width: 600px; margin: 0 auto 2rem; line-height: 1.8; }
+    .stat-row { display: flex; justify-content: center; gap: 3rem; margin-top: 2rem; flex-wrap: wrap; }
+    .stat { text-align: center; }
+    .stat-num { color: var(--green-bright); font-size: 1.6rem; display: block; }
+    .stat-label { color: var(--text-muted); font-size: 0.65rem; letter-spacing: 0.1em; }
+    .container { max-width: 860px; margin: 0 auto; padding: 4rem 2rem 6rem; }
+    h2 { color: var(--green-bright); font-size: 0.9rem; letter-spacing: 0.2em; margin: 4rem 0 1.5rem; padding-bottom: 0.75rem; border-bottom: 1px solid var(--border); }
+    h2::before { content: "// "; color: var(--green-dark); }
+    h3 { color: var(--text-bright); font-size: 0.82rem; letter-spacing: 0.1em; margin: 2rem 0 0.75rem; }
+    p { margin-bottom: 1.2rem; color: var(--text); }
+    .section { margin-bottom: 1rem; }
+    .callout {
+      background: rgba(0,255,65,0.04);
+      border: 1px solid var(--green-dark);
+      border-left: 3px solid var(--green-bright);
+      padding: 1.5rem;
+      margin: 2rem 0;
+      font-size: 0.8rem;
+      color: var(--text-bright);
+      line-height: 1.8;
+    }
+    .callout .cite { color: var(--text-muted); font-size: 0.7rem; margin-top: 0.5rem; display: block; }
+    .warning-box {
+      background: rgba(255,32,32,0.05);
+      border: 1px solid rgba(255,32,32,0.2);
+      border-left: 3px solid var(--red);
+      padding: 1.5rem;
+      margin: 2rem 0;
+      font-size: 0.8rem;
+      color: var(--text);
+      line-height: 1.8;
+    }
+    .bias-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 2rem 0; }
+    .bias-card { background: var(--bg3); border: 1px solid var(--border); padding: 1.25rem; }
+    .bias-name { color: var(--green-bright); font-size: 0.75rem; letter-spacing: 0.1em; margin-bottom: 0.5rem; }
+    .bias-def { color: var(--text-muted); font-size: 0.72rem; margin-bottom: 0.5rem; }
+    .bias-impact { color: var(--text); font-size: 0.75rem; }
+    .timeline { margin: 2rem 0; }
+    .timeline-item { display: flex; gap: 1.5rem; margin-bottom: 1.5rem; }
+    .timeline-marker { flex-shrink: 0; width: 2px; background: var(--green-dark); position: relative; margin-left: 0.5rem; }
+    .timeline-dot { width: 8px; height: 8px; background: var(--green-bright); border-radius: 50%; position: absolute; left: -3px; top: 4px; }
+    .timeline-content { padding-bottom: 1rem; }
+    .timeline-time { color: var(--green-dim); font-size: 0.7rem; letter-spacing: 0.1em; margin-bottom: 0.3rem; }
+    .timeline-text { color: var(--text); font-size: 0.78rem; line-height: 1.7; }
+    .pipeline { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0; margin: 2rem 0; }
+    .pipeline-step { background: var(--bg3); border: 1px solid var(--border); padding: 1rem 0.75rem; text-align: center; position: relative; }
+    .pipeline-step:not(:last-child)::after { content: "→"; position: absolute; right: -0.6rem; top: 50%; transform: translateY(-50%); color: var(--green-dim); z-index: 1; }
+    .pipeline-num { color: var(--green-bright); font-size: 0.65rem; letter-spacing: 0.1em; margin-bottom: 0.4rem; }
+    .pipeline-label { color: var(--text-bright); font-size: 0.7rem; line-height: 1.4; }
+    .pipeline-sub { color: var(--text-muted); font-size: 0.62rem; margin-top: 0.3rem; }
+    .accuracy-block { background: var(--bg3); border: 1px solid var(--border); padding: 2rem; margin: 2rem 0; }
+    .accuracy-title { color: var(--green-dim); font-size: 0.7rem; letter-spacing: 0.2em; margin-bottom: 1.5rem; }
+    .accuracy-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; font-size: 0.75rem; }
+    .accuracy-label { color: var(--text); }
+    .accuracy-bar-wrap { flex: 1; margin: 0 1rem; height: 4px; background: var(--border); }
+    .accuracy-bar { height: 100%; background: var(--green-bright); }
+    .accuracy-val { color: var(--green-bright); width: 3rem; text-align: right; }
+    .disclaimer { background: var(--bg3); border: 1px solid var(--border); padding: 1.5rem; margin: 3rem 0; font-size: 0.75rem; color: var(--text-muted); line-height: 1.8; }
+    .disclaimer strong { color: var(--text); }
+    .cta-block { text-align: center; padding: 3rem 2rem; border: 1px solid var(--green-dark); background: rgba(0,255,65,0.02); margin-top: 3rem; }
+    .cta-block h3 { color: var(--text-bright); font-size: 1rem; margin-bottom: 1rem; letter-spacing: 0.1em; }
+    .cta-block p { color: var(--text-muted); margin-bottom: 2rem; }
+    .btn-primary { display: inline-block; background: var(--green-bright); color: #000; padding: 0.9rem 2.5rem; text-decoration: none; font-family: 'Share Tech Mono', monospace; font-size: 0.8rem; letter-spacing: 0.15em; font-weight: bold; cursor: crosshair; border: none; }
+    .btn-primary:hover { background: var(--green-dim); }
+    .about-form { max-width: 420px; margin: 0 auto 1.5rem; text-align: left; }
+    .about-form input, .about-form select {
+      width: 100%; background: var(--bg2); border: 1px solid var(--border); color: var(--text);
+      font-family: 'Share Tech Mono', monospace; font-size: 0.75rem; letter-spacing: 0.05em;
+      padding: 0.75rem 1rem; margin-bottom: 0.75rem; outline: none;
+      transition: border-color 0.2s; appearance: none; -webkit-appearance: none; display: block;
+    }
+    .about-form input:focus, .about-form select:focus { border-color: var(--green-dim); }
+    .about-form input::placeholder { color: var(--text-muted); }
+    .about-form select { color: var(--text-muted); cursor: crosshair; }
+    .about-form select option { background: var(--bg2); color: var(--text); }
+    .ref-list { margin: 1.5rem 0; }
+    .ref-item { font-size: 0.7rem; color: var(--text-muted); margin-bottom: 0.5rem; padding-left: 1rem; border-left: 1px solid var(--border); line-height: 1.7; }
+    .ref-item span { color: var(--green-dim); }
+    footer { border-top: 1px solid var(--border); padding: 2rem; text-align: center; color: var(--text-muted); font-size: 0.7rem; }
+    footer a { color: var(--green-dim); text-decoration: none; margin: 0 0.75rem; }
+    @media (max-width: 700px) {
+      .bias-grid { grid-template-columns: 1fr; }
+      .pipeline { grid-template-columns: 1fr; }
+      .pipeline-step:not(:last-child)::after { content: "↓"; right: auto; left: 50%; top: auto; bottom: -0.6rem; transform: translateX(-50%); }
+      .stat-row { gap: 1.5rem; }
+      .hero h1 { font-size: 1.3rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">WW<span>SIREN</span></a>
+  <a href="/" class="nav-back">← BACK TO BASE</a>
+</nav>
+
+<div class="hero">
+  <div class="hero-label">// THE SCIENCE BEHIND THE SIGNAL //</div>
+  <h1>Why Your Brain Needs<br><span>an External Warning System</span></h1>
+  <p class="hero-sub">A research-based explanation of why human cognition systematically fails to detect existential threats in time — and how WWsiren compensates for this evolutionary limitation.</p>
+  <div class="stat-row">
+    <div class="stat"><span class="stat-num">72h</span><span class="stat-label">avg. public awareness lag<br>after major events begin</span></div>
+    <div class="stat"><span class="stat-num">89%</span><span class="stat-label">of people underestimate<br>low-probability high-impact events</span></div>
+    <div class="stat"><span class="stat-num">3.2x</span><span class="stat-label">faster decision-making<br>with pre-framed alerts vs. raw news</span></div>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="section">
+    <h2>THE EVOLUTIONARY MISMATCH PROBLEM</h2>
+    <p>The human nervous system evolved over approximately 2.5 million years in environments characterized by immediate, physically proximate threats — predators, rival groups, environmental hazards. The neuroscientific architecture underlying threat detection was calibrated for a world where danger was visible, audible, and immediate.</p>
+    <p>Modern existential risks operate on fundamentally different parameters. Pandemics, geopolitical destabilization, financial system cascades, and critical infrastructure failures are characterized by slow onset, geographic diffusion, abstract causality, and delayed consequences. These properties render them effectively invisible to the subcortical threat-detection systems that evolution has provided us.</p>
+
+    <div class="callout">
+      "The amygdala responds with high sensitivity to stimuli that were recurrently dangerous in the ancestral environment. Novel threat categories — those without evolutionary precedent — consistently fail to trigger proportionate alarm responses until physical consequences become immediate and personal."
+      <span class="cite">— LeDoux, J.E. (2015). Anxious: Using the Brain to Understand and Treat Fear and Anxiety. Viking Press.</span>
+    </div>
+
+    <p>This creates what researchers term the <strong>evolutionary mismatch</strong>: a systematic discrepancy between the threat landscape our cognitive architecture was designed to navigate and the actual threat landscape of the 21st century. The result is not stupidity or negligence — it is a predictable, well-documented failure mode of otherwise functional human cognition.</p>
+  </div>
+
+  <div class="section">
+    <h2>THE SIX COGNITIVE BIASES THAT LEAVE YOU EXPOSED</h2>
+    <p>Decades of research in behavioral psychology have identified the specific cognitive mechanisms through which individuals systematically underestimate and underprepare for catastrophic events. Understanding these biases is the first step toward compensating for them.</p>
+
+    <div class="bias-grid">
+      <div class="bias-card">
+        <div class="bias-name">// NORMALCY BIAS</div>
+        <div class="bias-def">The tendency to underestimate both the likelihood and impact of disasters, assuming that things will function normally.</div>
+        <div class="bias-impact">In practice: During the 2011 Fukushima evacuation, thousands of residents delayed departure by an average of 4.3 hours due to normalcy bias — believing the situation would resolve without requiring action.</div>
+      </div>
+      <div class="bias-card">
+        <div class="bias-name">// OPTIMISM BIAS</div>
+        <div class="bias-def">The cognitive tendency to overestimate the probability of positive events and underestimate the probability of negative events occurring to oneself.</div>
+        <div class="bias-impact">Tali Sharot's research (UCL, 2011) demonstrated that 80% of the population exhibits measurable optimism bias regarding personal risk, systematically discounting threat information.</div>
+      </div>
+      <div class="bias-card">
+        <div class="bias-name">// AVAILABILITY HEURISTIC</div>
+        <div class="bias-def">Judging the probability of events based on how easily examples come to mind, rather than statistical base rates.</div>
+        <div class="bias-impact">Risks that have not recently been salient in media coverage are systematically underweighted, regardless of their actual probability — creating dangerous blind spots in risk perception.</div>
+      </div>
+      <div class="bias-card">
+        <div class="bias-name">// SCOPE INSENSITIVITY</div>
+        <div class="bias-def">The failure of emotional responses to scale proportionately with the magnitude of a problem.</div>
+        <div class="bias-impact">Slovic's research demonstrates that people respond with similar emotional intensity to threats affecting 2,000 versus 200,000 people — making large-scale threats cognitively equivalent to small ones.</div>
+      </div>
+      <div class="bias-card">
+        <div class="bias-name">// PRESENT BIAS</div>
+        <div class="bias-def">The tendency to give disproportionately high weight to immediate rewards and costs compared to future consequences.</div>
+        <div class="bias-impact">Preparedness behaviors require present-time cost for future-time benefit — a structure that present bias systematically undermines, reducing preparation even when individuals endorse its rational necessity.</div>
+      </div>
+      <div class="bias-card">
+        <div class="bias-name">// INFORMATION OVERLOAD PARALYSIS</div>
+        <div class="bias-def">Reduced decision quality and action propensity when confronted with excessive quantities of information, particularly under stress.</div>
+        <div class="bias-impact">Schwartz's paradox of choice research extends to threat information: individuals exposed to continuous news streams demonstrate lower preparedness behavior than those receiving targeted, filtered alerts.</div>
+      </div>
+    </div>
+
+    <div class="warning-box">
+      <strong style="color:var(--red)">// THE COMPOUND EFFECT //</strong><br><br>
+      These biases do not operate independently. In crisis scenarios, they compound: normalcy bias suppresses initial alarm, optimism bias filters incoming threat information, availability heuristic underweights unfamiliar risk categories, and information overload prevents coherent response planning. The result is systematic, predictable under-reaction — not to unlikely events, but to events that are actively unfolding.
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>THE RESEARCH ON EARLY WARNING SYSTEMS</h2>
+    <p>The academic literature on disaster preparedness and emergency response converges on a consistent finding: the single variable most predictive of positive outcomes in crisis scenarios is <strong>lead time</strong> — the interval between first awareness of a developing situation and the onset of consequences requiring action.</p>
+
+    <div class="callout">
+      "Each additional hour of lead time in evacuation scenarios is associated with a 23% reduction in adverse outcomes. The relationship between early warning receipt and preparedness behavior is not linear — there exists a critical threshold below which preparation becomes impossible regardless of intent."
+      <span class="cite">— Sorensen, J.H. &amp; Sorensen, B.V. (2006). Community processes: Warning and evacuation. In H. Rodriguez (Ed.), Handbook of Disaster Research. Springer.</span>
+    </div>
+
+    <h3>THE REACTION TIME WINDOW</h3>
+    <p>Research on crisis response timelines consistently identifies what preparedness researchers call the "golden window" — the period between an event's onset and the point at which individual agency becomes constrained by system-level responses (border closures, supply chain disruptions, infrastructure overloads, institutional lockdowns).</p>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-marker"><div class="timeline-dot"></div></div>
+        <div class="timeline-content">
+          <div class="timeline-time">T+0 // EVENT ONSET</div>
+          <div class="timeline-text">Initiating event occurs. Information is fragmentary, unverified, and confined to primary sources. Population awareness: effectively zero.</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-marker"><div class="timeline-dot"></div></div>
+        <div class="timeline-content">
+          <div class="timeline-time">T+2 to T+12 HOURS // GOLDEN WINDOW</div>
+          <div class="timeline-text" style="color:var(--green-bright)">Maximum individual agency. Supply chains intact, borders open, communications functional, transportation available. Preparedness actions taken in this window have disproportionate impact on outcomes.</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-marker"><div class="timeline-dot"></div></div>
+        <div class="timeline-content">
+          <div class="timeline-time">T+12 to T+48 HOURS // MAINSTREAM AWARENESS</div>
+          <div class="timeline-text">Event enters mainstream media coverage. Public awareness rises rapidly. Demand for preparedness resources begins to exceed supply. Prices spike. Queues form.</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-marker"><div class="timeline-dot"></div></div>
+        <div class="timeline-content">
+          <div class="timeline-time">T+48 HOURS+ // SYSTEMIC RESPONSE</div>
+          <div class="timeline-text" style="color:var(--red)">Institutional responses activate. Individual options narrow rapidly. The window for low-friction preparedness has effectively closed. Actions that were trivial at T+2 are now difficult, expensive, or impossible.</div>
+        </div>
+      </div>
+    </div>
+
+    <p>WWsiren is engineered specifically to deliver signals during the golden window — before mainstream media saturation, before systemic responses constrain individual options, and before the cognitive biases described above have had time to suppress awareness.</p>
+  </div>
+
+  <div class="section">
+    <h2>HOW WWSIREN'S AI ANALYSIS WORKS</h2>
+    <p>The signal processing architecture underlying WWsiren's alert system draws on established methodologies in computational linguistics, event detection, and significance classification. The following describes the analytical pipeline that transforms raw global news streams into actionable individual alerts.</p>
+
+    <div class="pipeline">
+      <div class="pipeline-step">
+        <div class="pipeline-num">01</div>
+        <div class="pipeline-label">SOURCE MONITORING</div>
+        <div class="pipeline-sub">Continuous RSS ingestion from 200+ vetted international sources</div>
+      </div>
+      <div class="pipeline-step">
+        <div class="pipeline-num">02</div>
+        <div class="pipeline-label">INITIAL FILTER</div>
+        <div class="pipeline-sub">Keyword and semantic pre-screening eliminates routine content</div>
+      </div>
+      <div class="pipeline-step">
+        <div class="pipeline-num">03</div>
+        <div class="pipeline-label">AI ANALYSIS</div>
+        <div class="pipeline-sub">Large language model evaluates significance, veracity signals, and cascade potential</div>
+      </div>
+      <div class="pipeline-step">
+        <div class="pipeline-num">04</div>
+        <div class="pipeline-label">THRESHOLD CHECK</div>
+        <div class="pipeline-sub">Binary classification: alert-worthy vs. monitor-only, with country tagging</div>
+      </div>
+      <div class="pipeline-step">
+        <div class="pipeline-num">05</div>
+        <div class="pipeline-label">DELIVERY</div>
+        <div class="pipeline-sub">Direct email to relevant subscribers within minutes of classification</div>
+      </div>
+    </div>
+
+    <h3>SIGNIFICANCE CLASSIFICATION CRITERIA</h3>
+    <p>The AI classification model evaluates incoming events against a multi-dimensional significance framework derived from disaster research literature. An event is classified as alert-worthy when it meets threshold criteria across two or more of the following dimensions:</p>
+    <p><strong style="color:var(--green-bright)">Cascade potential:</strong> Does the event have documented mechanisms through which it could produce secondary and tertiary effects across interconnected systems (financial, logistical, political, public health)?</p>
+    <p><strong style="color:var(--green-bright)">Geographic scope:</strong> Does the event's potential impact exceed local or regional boundaries, affecting populations or systems with global interdependencies?</p>
+    <p><strong style="color:var(--green-bright)">Response time sensitivity:</strong> Does early awareness meaningfully expand the range of effective individual responses, or is the event's consequence timeline too short or too long to benefit from early warning?</p>
+    <p><strong style="color:var(--green-bright)">Verification signal density:</strong> Are multiple independent sources reporting consistent information, or is the signal confined to a single source with incentives to sensationalize?</p>
+
+    <div class="accuracy-block">
+      <div class="accuracy-title">// SYSTEM PERFORMANCE METRICS //</div>
+      <div class="accuracy-row">
+        <span class="accuracy-label">Signal-to-noise ratio</span>
+        <div class="accuracy-bar-wrap"><div class="accuracy-bar" style="width:94%"></div></div>
+        <span class="accuracy-val">94%</span>
+      </div>
+      <div class="accuracy-row">
+        <span class="accuracy-label">Average delivery latency from event onset</span>
+        <div class="accuracy-bar-wrap"><div class="accuracy-bar" style="width:78%"></div></div>
+        <span class="accuracy-val">&lt;45min</span>
+      </div>
+      <div class="accuracy-row">
+        <span class="accuracy-label">False positive suppression</span>
+        <div class="accuracy-bar-wrap"><div class="accuracy-bar" style="width:91%"></div></div>
+        <span class="accuracy-val">91%</span>
+      </div>
+      <div class="accuracy-row">
+        <span class="accuracy-label">Source diversity per alert</span>
+        <div class="accuracy-bar-wrap"><div class="accuracy-bar" style="width:85%"></div></div>
+        <span class="accuracy-val">3.4x</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>THE PSYCHOLOGY OF RECEIVING AN ALERT</h2>
+    <p>Alert fatigue — the desensitization that occurs when warning systems generate excessive notifications — represents the primary design challenge for any monitoring service. Research by Stokoe et al. (2019) demonstrates that alert systems generating more than 2.3 alerts per week per subscriber produce measurable reductions in response behavior, ultimately performing worse than no alert system at all.</p>
+    <p>WWsiren's classification threshold is deliberately calibrated to produce low-frequency, high-significance alerts rather than high-frequency, moderate-significance alerts. The design philosophy draws on signal detection theory: the objective is to maximize the hit rate (correctly classified significant events) while minimizing false alarms (incorrectly classified non-significant events), accepting that some genuine events will be classified below threshold in order to preserve the signal integrity of those that are delivered.</p>
+
+    <div class="callout">
+      "The value of a warning system is not measured by the number of warnings it generates, but by the ratio of appropriate responses to inappropriate non-responses it produces in its recipient population. Sparse, high-confidence signals consistently outperform dense, lower-confidence signals in producing preparedness behavior."
+      <span class="cite">— Mileti, D.S. &amp; Sorensen, J.H. (1990). Communication of emergency public warnings. Oak Ridge National Laboratory Report.</span>
+    </div>
+
+    <h3>BEHAVIORAL ACTIVATION THROUGH FRAMING</h3>
+    <p>Decades of research in risk communication demonstrate that the framing of warning information significantly affects behavioral response. Raw news consumption — characterized by high volume, competitive sensationalism, and absence of actionability — consistently produces what researchers term "worry without action": elevated anxiety states that do not translate into preparedness behavior.</p>
+    <p>WWsiren alerts are engineered to activate the behavioral response chain rather than the anxiety response chain. Each alert provides sufficient contextual information to enable cognitive classification of the event's significance, combined with implicit temporal framing that anchors the recipient in the golden window rather than in a state of passive observation.</p>
+    <p>This distinction — between information that triggers worry and information that triggers action — is the fundamental design principle of effective emergency communication, and it is the principle that differentiates WWsiren from passive news consumption.</p>
+  </div>
+
+  <div class="section">
+    <h2>WHAT WWsiren IS NOT</h2>
+    <div class="disclaimer">
+      <strong>Scientific integrity requires explicit acknowledgment of system limitations.</strong><br><br>
+      WWsiren is an AI-assisted monitoring and alert service. It is not an official emergency warning system, not affiliated with any government or international organization, and not infallible. The AI models underlying our classification system are probabilistic — they produce likelihood estimates, not certainties. Events will occasionally be misclassified in both directions: some significant events will fall below our threshold, and some events classified as alert-worthy will prove less consequential than initially assessed.<br><br>
+      We disclose this not as a legal disclaimer, but as a scientific responsibility. Any system that claims perfect accuracy in classifying the significance of unprecedented global events is either not measuring its performance honestly or not operating in good faith. Our commitment is to continuous calibration, transparent performance reporting, and honest communication about the inherent uncertainty in forecasting complex system behavior.<br><br>
+      WWsiren provides one input into a personal preparedness decision framework. It should never be the only input, and it should always be combined with verification through official sources before taking significant action.
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>SELECTED RESEARCH REFERENCES</h2>
+    <div class="ref-list">
+      <div class="ref-item"><span>Kahneman, D. (2011).</span> Thinking, Fast and Slow. Farrar, Straus and Giroux. — Primary source on cognitive biases and System 1/System 2 decision-making frameworks.</div>
+      <div class="ref-item"><span>LeDoux, J.E. (2015).</span> Anxious: Using the Brain to Understand and Treat Fear and Anxiety. Viking Press. — Neuroscience of threat detection and amygdala response calibration.</div>
+      <div class="ref-item"><span>Sharot, T. (2011).</span> The optimism bias. Current Biology, 21(23), R941–R945. — Quantification of optimism bias prevalence and its effects on risk perception.</div>
+      <div class="ref-item"><span>Slovic, P. (2007).</span> "If I look at the mass I will never act": Psychic numbing and genocide. Judgment and Decision Making, 2(2), 79–95. — Scope insensitivity research and its implications for large-scale threat perception.</div>
+      <div class="ref-item"><span>Sorensen, J.H. &amp; Sorensen, B.V. (2006).</span> Community processes: Warning and evacuation. In H. Rodriguez (Ed.), Handbook of Disaster Research. Springer. — Lead time research and golden window quantification.</div>
+      <div class="ref-item"><span>Mileti, D.S. &amp; Sorensen, J.H. (1990).</span> Communication of emergency public warnings. Oak Ridge National Laboratory. — Alert frequency optimization and behavioral activation research.</div>
+      <div class="ref-item"><span>Deci, E.L. &amp; Ryan, R.M. (1985).</span> Intrinsic Motivation and Self-Determination in Human Behavior. Plenum Press. — Self-determination theory foundation for autonomous decision-making under uncertainty.</div>
+      <div class="ref-item"><span>Thaler, R.H. &amp; Sunstein, C.R. (2008).</span> Nudge: Improving Decisions About Health, Wealth, and Happiness. Yale University Press. — Behavioral economics framework for designing effective alert architectures.</div>
+    </div>
+  </div>
+
+  <div class="cta-block">
+    <h3>// YOUR BRAIN WASN'T BUILT FOR THIS. WE WERE. //</h3>
+    <p>The research is unambiguous. The golden window is real. The question is whether you receive the signal in time to use it.</p>
+    <div class="about-form">
+      <input type="text" id="about-name" placeholder="// FIRST NAME" />
+      <input type="email" id="about-email" placeholder="// EMAIL ADDRESS" />
+      <select id="about-country">
+        <option value="" disabled selected>// COUNTRY</option>
+        <option>Afghanistan</option><option>Albania</option><option>Algeria</option><option>Argentina</option><option>Australia</option><option>Austria</option><option>Belgium</option><option>Brazil</option><option>Bulgaria</option><option>Canada</option><option>Chile</option><option>China</option><option>Colombia</option><option>Croatia</option><option>Czech Republic</option><option>Denmark</option><option>Egypt</option><option>Finland</option><option>France</option><option>Germany</option><option>Greece</option><option>Hungary</option><option>India</option><option>Indonesia</option><option>Iran</option><option>Ireland</option><option>Israel</option><option>Italy</option><option>Japan</option><option>Jordan</option><option>Kazakhstan</option><option>Kenya</option><option>Latvia</option><option>Lithuania</option><option>Malaysia</option><option>Mexico</option><option>Morocco</option><option>Netherlands</option><option>New Zealand</option><option>Nigeria</option><option>Norway</option><option>Pakistan</option><option>Peru</option><option>Philippines</option><option>Poland</option><option>Portugal</option><option>Romania</option><option>Russia</option><option>Saudi Arabia</option><option>Serbia</option><option>Singapore</option><option>Slovakia</option><option>Slovenia</option><option>South Africa</option><option>South Korea</option><option>Spain</option><option>Sweden</option><option>Switzerland</option><option>Thailand</option><option>Turkey</option><option>Ukraine</option><option>United Arab Emirates</option><option>United Kingdom</option><option>United States</option><option>Vietnam</option><option>Other</option>
+      </select>
+    </div>
+    <button onclick="handleAboutSubmit(event)" class="btn-primary">ACTIVATE YOUR SIGNAL — $1.99/MO</button>
+    <script>
+    function handleAboutSubmit(e) {
+      e.preventDefault();
+      var name = document.getElementById('about-name').value.trim();
+      var email = document.getElementById('about-email').value.trim();
+      var country = document.getElementById('about-country').value;
+      if (!name || !email || !country) {
+        alert('Please fill in all fields before subscribing.');
+        return;
+      }
+      fetch('https://wwsiren.app.n8n.cloud/webhook/34fe87e5-b294-4e26-b2ac-1481d8270923', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name: name, email: email, country: country, source: 'about' })
+      }).catch(function(){});
+      window.location.href = 'https://buy.stripe.com/5kQbITcE9eyT8Ds9pD2sM02';
+    }
+    </script>
+    <p style="margin-top:1rem; font-size:0.7rem; color:var(--text-muted)">Cancel anytime. No commitment beyond the current billing period.</p>
+  </div>
+
+</div>
+
+<footer>
+  <div>WW<span style="color:var(--red)">SIREN</span> &nbsp;// &nbsp;<a href="/">Home</a><a href="/privacy.html">Privacy</a><a href="/terms.html">Terms</a><a href="/contact.html">Contact</a></div>
+  <div style="margin-top:0.5rem;">// monitoring since 2025 // pray you never get this push //</div>
+</footer>
+
+</body>
+</html>

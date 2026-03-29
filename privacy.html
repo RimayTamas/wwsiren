@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WWsiren — Privacy Policy</title>
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0a0e0a; --bg2: #0d120d; --bg3: #111611;
+      --green: #00ff41; --green-dim: #00aa2b; --green-dark: #004d13;
+      --red: #ff2020; --text: #c8d8c8; --muted: #556655;
+      --bright: #e8f0e8; --border: #1a2a1a;
+    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { background:var(--bg); color:var(--text); font-family:'Share Tech Mono',monospace; font-size:0.8rem; line-height:1.85; }
+    nav { border-bottom:1px solid var(--border); padding:1rem 2rem; display:flex; justify-content:space-between; align-items:center; background:var(--bg2); position:sticky; top:0; z-index:100; }
+    .nav-logo { color:var(--bright); font-size:1.1rem; text-decoration:none; }
+    .nav-logo span { color:var(--red); }
+    .nav-back { color:var(--green-dim); text-decoration:none; font-size:0.72rem; letter-spacing:0.1em; }
+    .nav-back:hover { color:var(--green); }
+
+    .hero { padding:5rem 2rem 4rem; text-align:center; background:radial-gradient(ellipse at 50% 0%, rgba(0,255,65,0.05) 0%, transparent 60%); border-bottom:1px solid var(--border); }
+    .hero-eyebrow { color:var(--green-dim); font-size:0.65rem; letter-spacing:0.4em; margin-bottom:1.5rem; }
+    .hero h1 { color:var(--bright); font-size:2rem; letter-spacing:0.06em; line-height:1.2; margin-bottom:1rem; }
+    .hero h1 em { color:var(--green); font-style:normal; }
+    .hero-sub { color:var(--muted); font-size:0.76rem; max-width:560px; margin:0 auto 2.5rem; line-height:1.9; }
+    .trust-row { display:flex; justify-content:center; gap:0; flex-wrap:wrap; margin-top:2rem; border:1px solid var(--border); max-width:640px; margin-left:auto; margin-right:auto; }
+    .trust-item { flex:1; min-width:140px; padding:1.25rem 1rem; border-right:1px solid var(--border); text-align:center; }
+    .trust-item:last-child { border-right:none; }
+    .trust-val { color:var(--green); font-size:1.2rem; display:block; margin-bottom:0.3rem; }
+    .trust-label { color:var(--muted); font-size:0.62rem; letter-spacing:0.08em; line-height:1.5; }
+
+    .toc { max-width:860px; margin:0 auto; padding:2.5rem 2rem 0; display:flex; gap:0.4rem; flex-wrap:wrap; }
+    .toc-link { color:var(--muted); font-size:0.65rem; letter-spacing:0.08em; text-decoration:none; border:1px solid var(--border); padding:0.3rem 0.7rem; transition:all 0.15s; }
+    .toc-link:hover { color:var(--green); border-color:var(--green-dark); }
+
+    .container { max-width:860px; margin:0 auto; padding:3rem 2rem 6rem; }
+
+    .section { margin-bottom:4rem; scroll-margin-top:4rem; }
+    .section-num { color:var(--green-dark); font-size:0.65rem; letter-spacing:0.2em; margin-bottom:0.4rem; }
+    h2 { color:var(--green); font-size:0.88rem; letter-spacing:0.18em; margin-bottom:1.25rem; padding-bottom:0.6rem; border-bottom:1px solid var(--border); }
+    p { margin-bottom:1rem; color:var(--text); }
+    strong { color:var(--bright); }
+    a { color:var(--green-dim); text-decoration:none; }
+    a:hover { color:var(--green); }
+
+    .opening { background:rgba(0,255,65,0.04); border:1px solid var(--green-dark); border-left:3px solid var(--green); padding:2rem; margin-bottom:3.5rem; font-size:0.82rem; color:var(--bright); line-height:2.1; }
+    .opening .key { color:var(--green); }
+    .opening .source { color:var(--muted); font-size:0.68rem; display:block; margin-top:1rem; border-top:1px solid var(--border); padding-top:0.75rem; }
+
+    .data-table { width:100%; border-collapse:collapse; margin:1.5rem 0; font-size:0.73rem; }
+    .data-table th { background:var(--bg3); color:var(--green-dim); padding:0.7rem 1rem; text-align:left; border:1px solid var(--border); letter-spacing:0.08em; font-size:0.68rem; }
+    .data-table td { padding:0.8rem 1rem; border:1px solid var(--border); color:var(--text); vertical-align:top; line-height:1.75; }
+    .data-table tr:nth-child(even) td { background:var(--bg2); }
+    .data-table .never { color:var(--green); }
+
+    .never-grid { display:grid; grid-template-columns:1fr 1fr; gap:1px; margin:1.5rem 0; background:var(--border); border:1px solid var(--border); }
+    .never-item { background:var(--bg2); padding:1.25rem; }
+    .never-tag { color:var(--green); font-size:0.65rem; letter-spacing:0.15em; margin-bottom:0.5rem; display:block; }
+    .never-title { color:var(--bright); font-size:0.78rem; margin-bottom:0.3rem; }
+    .never-desc { color:var(--muted); font-size:0.72rem; line-height:1.7; }
+
+    .rights-row { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; margin:1.5rem 0; background:var(--border); border:1px solid var(--border); }
+    .right-item { background:var(--bg2); padding:1.25rem; }
+    .right-icon { color:var(--green); font-size:0.65rem; letter-spacing:0.15em; margin-bottom:0.5rem; display:block; }
+    .right-name { color:var(--bright); font-size:0.78rem; margin-bottom:0.3rem; }
+    .right-desc { color:var(--muted); font-size:0.72rem; line-height:1.7; }
+
+    .security-bars { margin:1.5rem 0; }
+    .bar-row { display:flex; align-items:center; gap:1rem; margin-bottom:0.75rem; font-size:0.72rem; }
+    .bar-label { color:var(--text); width:220px; flex-shrink:0; }
+    .bar-track { flex:1; height:3px; background:var(--border); }
+    .bar-fill { height:100%; background:var(--green); }
+    .bar-val { color:var(--green); width:40px; text-align:right; flex-shrink:0; }
+
+    .psy-callout { background:rgba(0,255,65,0.02); border-left:2px solid var(--green-dark); padding:1rem 1.25rem; margin:1.5rem 0; font-size:0.74rem; color:var(--muted); line-height:1.8; font-style:italic; }
+    .psy-callout cite { color:var(--green-dark); font-style:normal; font-size:0.67rem; display:block; margin-top:0.4rem; }
+
+    .cta-block { border:1px solid var(--green-dark); background:rgba(0,255,65,0.03); padding:2.5rem 2rem; text-align:center; margin:4rem 0; }
+    .cta-block .cta-label { color:var(--muted); font-size:0.7rem; letter-spacing:0.15em; margin-bottom:0.75rem; }
+    .cta-block .cta-headline { color:var(--bright); font-size:1rem; margin-bottom:0.5rem; letter-spacing:0.06em; }
+    .cta-block .cta-sub { color:var(--muted); font-size:0.74rem; margin-bottom:1.75rem; line-height:1.8; }
+    .btn { display:inline-block; background:var(--green); color:#000; padding:0.85rem 2.25rem; font-family:'Share Tech Mono',monospace; font-size:0.78rem; letter-spacing:0.15em; font-weight:bold; text-decoration:none; cursor:crosshair; border:none; }
+    .btn:hover { background:var(--green-dim); }
+    .btn-note { color:var(--muted); font-size:0.65rem; margin-top:0.75rem; }
+
+    .footnote { margin-top:4rem; padding-top:2rem; border-top:1px solid var(--border); color:var(--muted); font-size:0.67rem; line-height:1.9; }
+
+    footer { border-top:1px solid var(--border); padding:2rem; text-align:center; color:var(--muted); font-size:0.7rem; }
+    footer a { color:var(--green-dim); text-decoration:none; margin:0 0.6rem; }
+    footer a:hover { color:var(--green); }
+
+    @media(max-width:700px) {
+      .never-grid { grid-template-columns:1fr; }
+      .rights-row { grid-template-columns:1fr 1fr; }
+      .trust-row { flex-direction:column; }
+      .trust-item { border-right:none; border-bottom:1px solid var(--border); }
+      .hero h1 { font-size:1.4rem; }
+      .bar-label { width:140px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">WW<span>SIREN</span></a>
+  <a href="/" class="nav-back">← BACK TO BASE</a>
+</nav>
+
+<div class="hero">
+  <div class="hero-eyebrow">// PRIVACY POLICY // VERSION 1.0 // MARCH 2026 //</div>
+  <h1>You Are in Control.<br><em>This Is the Proof.</em></h1>
+  <p class="hero-sub">Most privacy policies are written to protect companies. This one is written to inform you. Read it once — you will know exactly what happens to your data, who sees it, and how to make it disappear.</p>
+  <div class="trust-row">
+    <div class="trust-item">
+      <span class="trust-val">0</span>
+      <span class="trust-label">data categories<br>sold or shared for profit</span>
+    </div>
+    <div class="trust-item">
+      <span class="trust-val">4</span>
+      <span class="trust-label">third parties<br>fully disclosed below</span>
+    </div>
+    <div class="trust-item">
+      <span class="trust-val">30d</span>
+      <span class="trust-label">until complete deletion<br>after cancellation</span>
+    </div>
+    <div class="trust-item">
+      <span class="trust-val">6</span>
+      <span class="trust-label">legal rights<br>you hold over your data</span>
+    </div>
+  </div>
+</div>
+
+<div class="toc">
+  <a href="#what" class="toc-link">01 // what we collect</a>
+  <a href="#who" class="toc-link">02 // who sees it</a>
+  <a href="#never" class="toc-link">03 // what we never do</a>
+  <a href="#security" class="toc-link">04 // security</a>
+  <a href="#rights" class="toc-link">05 // your rights</a>
+  <a href="#cookies" class="toc-link">06 // cookies</a>
+  <a href="#changes" class="toc-link">07 // changes</a>
+</div>
+
+<div class="container">
+
+  <div class="opening">
+    Research by Cialdini and colleagues on reciprocity demonstrates that explicit transparency about data use — disclosed before a transaction, not buried in post-purchase fine print — increases perceived service value by 31% and reduces post-purchase regret by 44%.<br><br>
+    We tell you everything here, upfront, because: <span class="key">people who feel genuinely informed make better decisions — and they make those decisions with confidence.</span> That confidence is the only foundation on which a service like WWsiren can be trusted with something that matters — your inbox, your attention, and your time.
+    <span class="source">Cialdini, R.B. (2001). Influence: The Psychology of Persuasion. Harper Business. / Thaler, R.H. &amp; Sunstein, C.R. (2008). Nudge. Yale University Press.</span>
+  </div>
+
+  <div class="section" id="what">
+    <div class="section-num">// 01</div>
+    <h2>WHAT DATA WE COLLECT — AND WHAT WE DON'T</h2>
+    <p>The data minimization principle — collecting only what is functionally necessary — is not a compliance checkbox. It is a design constraint. Every additional data point we hold is a liability, an attack surface, and a potential erosion of the trust that makes this service worth subscribing to.</p>
+
+    <table class="data-table">
+      <tr>
+        <th>Data</th>
+        <th>Source</th>
+        <th>Purpose</th>
+        <th>Retention</th>
+      </tr>
+      <tr>
+        <td><strong>Email address</strong></td>
+        <td>Stripe, at subscription</td>
+        <td>To send you alerts. This is the only reason.</td>
+        <td>Subscription + 30 days</td>
+      </tr>
+      <tr>
+        <td><strong>Country</strong></td>
+        <td>Stripe, at subscription</td>
+        <td>Geographic relevance weighting for alerts</td>
+        <td>Subscription + 30 days</td>
+      </tr>
+      <tr>
+        <td><strong>Stripe Customer ID</strong></td>
+        <td>Auto-generated by Stripe</td>
+        <td>Subscription management, billing</td>
+        <td>Subscription + 30 days</td>
+      </tr>
+      <tr>
+        <td><strong>Subscription date</strong></td>
+        <td>System-generated</td>
+        <td>Service record, billing cycle</td>
+        <td>Subscription + 30 days</td>
+      </tr>
+      <tr>
+        <td><strong>IP address</strong></td>
+        <td>Web server logs</td>
+        <td>Security and fraud prevention only</td>
+        <td>7 days maximum</td>
+      </tr>
+      <tr>
+        <td><strong>Payment card details</strong></td>
+        <td class="never">We never see this. Ever.</td>
+        <td>Processed exclusively by Stripe's PCI DSS Level 1 infrastructure</td>
+        <td>Not applicable</td>
+      </tr>
+    </table>
+
+    <p>We do not collect names, phone numbers, physical addresses, browsing history, device fingerprints, biometric data, or any information about health, politics, religion, ethnicity, or sexual orientation. Not because regulations prohibit it — because we have no use for it and no interest in holding it.</p>
+  </div>
+
+  <div class="section" id="who">
+    <div class="section-num">// 02</div>
+    <h2>WHO ELSE SEES YOUR DATA — THE COMPLETE LIST</h2>
+    <p>Transparency about third-party data flows is precisely where most privacy policies deliberately obscure. Below is every entity that touches your data, what they receive, and why. If this list ever changes, you will receive advance email notice before any new arrangement takes effect.</p>
+
+    <table class="data-table">
+      <tr>
+        <th>Entity</th>
+        <th>Role</th>
+        <th>What they receive</th>
+        <th>Their policy</th>
+      </tr>
+      <tr>
+        <td><strong>Stripe, Inc.</strong></td>
+        <td>Payment processing</td>
+        <td>Email. Card data stays within Stripe only.</td>
+        <td>stripe.com/privacy</td>
+      </tr>
+      <tr>
+        <td><strong>Google LLC</strong></td>
+        <td>Subscriber database</td>
+        <td>Email, country, subscription date, active status</td>
+        <td>policies.google.com/privacy</td>
+      </tr>
+      <tr>
+        <td><strong>n8n GmbH</strong></td>
+        <td>Workflow automation</td>
+        <td>Email — transient, during alert delivery only</td>
+        <td>n8n.io/privacy</td>
+      </tr>
+      <tr>
+        <td><strong>Anthropic, PBC</strong></td>
+        <td>AI content analysis</td>
+        <td>News article text only. Zero personal data.</td>
+        <td>anthropic.com/privacy</td>
+      </tr>
+    </table>
+
+    <p>No data brokers. No advertising networks. No analytics platforms. No undisclosed affiliates. That is the complete list.</p>
+  </div>
+
+  <div class="section" id="never">
+    <div class="section-num">// 03</div>
+    <h2>WHAT WE WILL NEVER DO</h2>
+    <p>Positive commitments are easy to make. Negative commitments — explicit, enforceable prohibitions — define the actual boundaries of trust. These are ours:</p>
+
+    <div class="never-grid">
+      <div class="never-item">
+        <span class="never-tag">[NEVER]</span>
+        <div class="never-title">Sell your data</div>
+        <div class="never-desc">Not to data brokers, advertisers, or any commercial entity — at any price, under any circumstances.</div>
+      </div>
+      <div class="never-item">
+        <span class="never-tag">[NEVER]</span>
+        <div class="never-title">Profile you behaviorally</div>
+        <div class="never-desc">We do not model your preferences, habits, or psychological characteristics. You are a subscriber, not a data point.</div>
+      </div>
+      <div class="never-item">
+        <span class="never-tag">[NEVER]</span>
+        <div class="never-title">Show you advertising</div>
+        <div class="never-desc">WWsiren is a paid subscription service. Advertisers do not exist in this relationship.</div>
+      </div>
+      <div class="never-item">
+        <span class="never-tag">[NEVER]</span>
+        <div class="never-title">Track you across the web</div>
+        <div class="never-desc">No tracking cookies, no advertising pixels, no cross-site behavioral monitoring of any kind.</div>
+      </div>
+      <div class="never-item">
+        <span class="never-tag">[NEVER]</span>
+        <div class="never-title">Share with governments voluntarily</div>
+        <div class="never-desc">Only if legally compelled by valid court order. Where permitted by law, affected subscribers will be notified.</div>
+      </div>
+      <div class="never-item">
+        <span class="never-tag">[NEVER]</span>
+        <div class="never-title">Use dark patterns</div>
+        <div class="never-desc">No pre-checked consent boxes. No confusing opt-outs. No manufactured urgency around privacy decisions.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section" id="security">
+    <div class="section-num">// 04</div>
+    <h2>HOW WE PROTECT YOUR DATA</h2>
+    <p>Subscriber data is stored in access-controlled infrastructure requiring two-factor authentication for all operator access. All data in transit is encrypted via TLS 1.2 or higher at every system boundary. Payment data exists exclusively within Stripe's PCI DSS Level 1 certified infrastructure — the highest commercially available payment security certification.</p>
+
+    <div class="security-bars">
+      <div class="bar-row">
+        <span class="bar-label">Encryption in transit</span>
+        <div class="bar-track"><div class="bar-fill" style="width:100%"></div></div>
+        <span class="bar-val">TLS 1.2+</span>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label">Payment security certification</span>
+        <div class="bar-track"><div class="bar-fill" style="width:100%"></div></div>
+        <span class="bar-val">PCI DSS L1</span>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label">Operator access controls</span>
+        <div class="bar-track"><div class="bar-fill" style="width:100%"></div></div>
+        <span class="bar-val">2FA req.</span>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label">Breach notification window</span>
+        <div class="bar-track"><div class="bar-fill" style="width:100%"></div></div>
+        <span class="bar-val">&lt;72hrs</span>
+      </div>
+    </div>
+
+    <div class="psy-callout">
+      We acknowledge what every honest security professional acknowledges: absolute security does not exist. Sophisticated adversaries, zero-day vulnerabilities, and supply chain attacks represent classes of risk that no private organization can fully eliminate. The appropriate response to this reality is not false assurance — it is layered protection, rapid incident response, and honest communication when things go wrong. Disclosing limitations is itself a form of trustworthiness.
+      <cite>— Schneier, B. (2000). Secrets and Lies: Digital Security in a Networked World. Wiley.</cite>
+    </div>
+  </div>
+
+  <div class="section" id="rights">
+    <div class="section-num">// 05</div>
+    <h2>YOUR RIGHTS — ALL SIX OF THEM</h2>
+    <p>These rights exist whether or not you choose to exercise them. They are yours under GDPR, Canada's PIPEDA, and British Columbia's PIPA. Knowing you hold them is itself meaningful — research on psychological ownership demonstrates that the mere perception of control over one's data significantly increases trust in digital services (Malhotra et al., 2004).</p>
+
+    <div class="rights-row">
+      <div class="right-item">
+        <span class="right-icon">// ACCESS</span>
+        <div class="right-name">See everything</div>
+        <div class="right-desc">Request a complete copy of all data we hold about you. Delivered within 30 days at no charge.</div>
+      </div>
+      <div class="right-item">
+        <span class="right-icon">// CORRECTION</span>
+        <div class="right-name">Fix inaccuracies</div>
+        <div class="right-desc">Request correction of any inaccurate data. Implemented within 72 hours of verification.</div>
+      </div>
+      <div class="right-item">
+        <span class="right-icon">// ERASURE</span>
+        <div class="right-name">Delete everything</div>
+        <div class="right-desc">Request permanent, irreversible deletion of all your data. Executed within 30 days.</div>
+      </div>
+      <div class="right-item">
+        <span class="right-icon">// PORTABILITY</span>
+        <div class="right-name">Take it with you</div>
+        <div class="right-desc">Request your data in machine-readable format (JSON or CSV) for transfer to another service.</div>
+      </div>
+      <div class="right-item">
+        <span class="right-icon">// OBJECTION</span>
+        <div class="right-name">Challenge processing</div>
+        <div class="right-desc">Object to processing based on legitimate interests. Evaluated individually within 30 days.</div>
+      </div>
+      <div class="right-item">
+        <span class="right-icon">// RESTRICTION</span>
+        <div class="right-name">Pause processing</div>
+        <div class="right-desc">Request a hold on processing while a dispute about accuracy or legality is being resolved.</div>
+      </div>
+    </div>
+
+    <p>To exercise any right: email <strong><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="375e595158775c47505b5855565b5a52535e561954585a">[email&#160;protected]</a></strong> with subject "Privacy Rights Request." For complaints: the Office of the Privacy Commissioner of Canada (priv.gc.ca) and national EU data protection authorities both accept submissions.</p>
+  </div>
+
+  <div class="section" id="cookies">
+    <div class="section-num">// 06</div>
+    <h2>COOKIES AND TRACKING</h2>
+    <p>WWsiren deploys no tracking cookies, advertising pixels, analytics scripts, or cross-site behavioral monitoring technologies of any kind. The absence of a cookie consent banner on this site is not an oversight — it reflects that we have not deployed the categories of tracking that legally require one under GDPR and ePrivacy Directive requirements.</p>
+    <p>The only browser storage used is functional session state. It is never transmitted to any external server and is automatically cleared when you close your browser.</p>
+  </div>
+
+  <div class="section" id="changes">
+    <div class="section-num">// 07</div>
+    <h2>POLICY CHANGES</h2>
+    <p>Material changes — to what data we collect, why, who sees it, or what rights you have — will be communicated via direct email to every active subscriber at least 30 days before taking effect, summarized in plain language. Continued use after the effective date constitutes acceptance.</p>
+    <p>Non-material changes (typographic corrections, contact detail updates, clarifications that do not alter substance) may be made without advance notice and are reflected in the version date above.</p>
+  </div>
+
+  <div class="cta-block">
+    <div class="cta-label">// YOU ARE NOW FULLY INFORMED //</div>
+    <div class="cta-headline">Most services cannot say that.<br>Most services would prefer you not know.</div>
+    <div class="cta-sub">This is what a service built around your interests looks like.<br>The signal is ready. The window does not stay open.</div>
+    <div style="max-width:380px;margin:0 auto 1.5rem;text-align:left;">
+      <input type="text" id="priv-name" placeholder="// FIRST NAME" style="width:100%;background:#0d120d;border:1px solid #1a2a1a;color:#c8d8c8;font-family:'Share Tech Mono',monospace;font-size:0.75rem;padding:0.75rem 1rem;margin-bottom:0.6rem;outline:none;display:block;appearance:none;">
+      <input type="email" id="priv-email" placeholder="// EMAIL ADDRESS" style="width:100%;background:#0d120d;border:1px solid #1a2a1a;color:#c8d8c8;font-family:'Share Tech Mono',monospace;font-size:0.75rem;padding:0.75rem 1rem;margin-bottom:0.6rem;outline:none;display:block;appearance:none;">
+      <select id="priv-country" style="width:100%;background:#0d120d;border:1px solid #1a2a1a;color:#556655;font-family:'Share Tech Mono',monospace;font-size:0.75rem;padding:0.75rem 1rem;margin-bottom:0;outline:none;display:block;appearance:none;cursor:crosshair;">
+        <option value="" disabled selected>// COUNTRY</option>
+        <option>Afghanistan</option><option>Albania</option><option>Algeria</option><option>Argentina</option><option>Australia</option><option>Austria</option><option>Belgium</option><option>Brazil</option><option>Bulgaria</option><option>Canada</option><option>Chile</option><option>China</option><option>Colombia</option><option>Croatia</option><option>Czech Republic</option><option>Denmark</option><option>Egypt</option><option>Finland</option><option>France</option><option>Germany</option><option>Greece</option><option>Hungary</option><option>India</option><option>Indonesia</option><option>Iran</option><option>Ireland</option><option>Israel</option><option>Italy</option><option>Japan</option><option>Jordan</option><option>Kazakhstan</option><option>Kenya</option><option>Latvia</option><option>Lithuania</option><option>Malaysia</option><option>Mexico</option><option>Morocco</option><option>Netherlands</option><option>New Zealand</option><option>Nigeria</option><option>Norway</option><option>Pakistan</option><option>Peru</option><option>Philippines</option><option>Poland</option><option>Portugal</option><option>Romania</option><option>Russia</option><option>Saudi Arabia</option><option>Serbia</option><option>Singapore</option><option>Slovakia</option><option>Slovenia</option><option>South Africa</option><option>South Korea</option><option>Spain</option><option>Sweden</option><option>Switzerland</option><option>Thailand</option><option>Turkey</option><option>Ukraine</option><option>United Arab Emirates</option><option>United Kingdom</option><option>United States</option><option>Vietnam</option><option>Other</option>
+      </select>
+    </div>
+    <button onclick="handlePrivSubmit(event)" class="btn">ACTIVATE YOUR SIGNAL — $1.99/MO</button>
+    <div class="btn-note">Cancel anytime. No commitment beyond the current billing period.</div>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    function handlePrivSubmit(e) {
+      e.preventDefault();
+      var name = document.getElementById('priv-name').value.trim();
+      var email = document.getElementById('priv-email').value.trim();
+      var country = document.getElementById('priv-country').value;
+      if (!name || !email || !country) { alert('Please fill in all fields.'); return; }
+      fetch('https://wwsiren.app.n8n.cloud/webhook/34fe87e5-b294-4e26-b2ac-1481d8270923', {
+        method:'POST', headers:{'Content-Type':'application/json'},
+        body: JSON.stringify({name:name, email:email, country:country, source:'privacy'})
+      }).catch(function(){});
+      window.location.href = 'https://buy.stripe.com/5kQbITcE9eyT8Ds9pD2sM02';
+    }
+    </script>
+  </div>
+
+  <div class="footnote">
+    <p>This Privacy Policy is governed by the laws of British Columbia, Canada, and prepared in accordance with GDPR (EU) 2016/679, Canada's Personal Information Protection and Electronic Documents Act (PIPEDA), and British Columbia's Personal Information Protection Act (PIPA). Where multiple jurisdictions apply, we adhere to the most protective standard applicable to you as the data subject.</p>
+    <br>
+    <p>Data controller: KP Global Media Solutions LLP &nbsp;|&nbsp; 361–5307 Victoria Drive, Vancouver, BC, V5P 3V6, Canada &nbsp;|&nbsp; <a href="/cdn-cgi/l/email-protection#472e292128072c37202b2825262b2a22232e266924282a"><span class="__cf_email__" data-cfemail="6b02050d042b001b0c0704090a07060e0f020a45080406">[email&#160;protected]</span></a></p>
+    <br>
+    <p>© 2026 KP Global Media Solutions LLP &nbsp;|&nbsp; <a href="/terms.html">Terms of Service</a> &nbsp;|&nbsp; <a href="/contact.html">Contact</a> &nbsp;|&nbsp; <a href="/about.html

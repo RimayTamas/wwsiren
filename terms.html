@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WWsiren — Terms of Service</title>
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:#0a0e0a;--bg2:#0d120d;--bg3:#111611;
+      --green:#00ff41;--green-dim:#00aa2b;--green-dark:#004d13;
+      --red:#ff2020;--text:#c8d8c8;--muted:#556655;
+      --bright:#e8f0e8;--border:#1a2a1a;
+    }
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{background:var(--bg);color:var(--text);font-family:'Share Tech Mono',monospace;font-size:0.8rem;line-height:1.85;}
+    nav{border-bottom:1px solid var(--border);padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center;background:var(--bg2);position:sticky;top:0;z-index:100;}
+    .nav-logo{color:var(--bright);font-size:1.1rem;text-decoration:none;}
+    .nav-logo span{color:var(--red);}
+    .nav-back{color:var(--green-dim);text-decoration:none;font-size:0.72rem;letter-spacing:0.1em;}
+    .nav-back:hover{color:var(--green);}
+    .hero{padding:5rem 2rem 4rem;text-align:center;background:radial-gradient(ellipse at 50% 0%,rgba(0,255,65,0.05) 0%,transparent 60%);border-bottom:1px solid var(--border);}
+    .hero-eyebrow{color:var(--green-dim);font-size:0.65rem;letter-spacing:0.4em;margin-bottom:1.5rem;}
+    .hero h1{color:var(--bright);font-size:2rem;letter-spacing:0.06em;line-height:1.2;margin-bottom:1rem;}
+    .hero h1 em{color:var(--green);font-style:normal;}
+    .hero-sub{color:var(--muted);font-size:0.76rem;max-width:560px;margin:0 auto 2.5rem;line-height:1.9;}
+    .terms-row{display:flex;justify-content:center;gap:0;flex-wrap:wrap;margin-top:2rem;border:1px solid var(--border);max-width:640px;margin-left:auto;margin-right:auto;}
+    .terms-item{flex:1;min-width:140px;padding:1.25rem 1rem;border-right:1px solid var(--border);text-align:center;}
+    .terms-item:last-child{border-right:none;}
+    .terms-val{color:var(--green);font-size:1.2rem;display:block;margin-bottom:0.3rem;}
+    .terms-label{color:var(--muted);font-size:0.62rem;letter-spacing:0.08em;line-height:1.5;}
+    .toc{max-width:860px;margin:0 auto;padding:2.5rem 2rem 0;display:flex;gap:0.4rem;flex-wrap:wrap;}
+    .toc-link{color:var(--muted);font-size:0.65rem;letter-spacing:0.08em;text-decoration:none;border:1px solid var(--border);padding:0.3rem 0.7rem;transition:all 0.15s;}
+    .toc-link:hover{color:var(--green);border-color:var(--green-dark);}
+    .container{max-width:860px;margin:0 auto;padding:3rem 2rem 6rem;}
+    .section{margin-bottom:4rem;scroll-margin-top:4rem;}
+    .section-num{color:var(--green-dark);font-size:0.65rem;letter-spacing:0.2em;margin-bottom:0.4rem;}
+    h2{color:var(--green);font-size:0.88rem;letter-spacing:0.18em;margin-bottom:1.25rem;padding-bottom:0.6rem;border-bottom:1px solid var(--border);}
+    p{margin-bottom:1rem;color:var(--text);}
+    strong{color:var(--bright);}
+    a{color:var(--green-dim);text-decoration:none;}
+    a:hover{color:var(--green);}
+    .opening{background:rgba(0,255,65,0.04);border:1px solid var(--green-dark);border-left:3px solid var(--green);padding:2rem;margin-bottom:3.5rem;font-size:0.82rem;color:var(--bright);line-height:2.1;}
+    .opening .key{color:var(--green);}
+    .opening .source{color:var(--muted);font-size:0.68rem;display:block;margin-top:1rem;border-top:1px solid var(--border);padding-top:0.75rem;}
+    .highlight-box{background:rgba(0,255,65,0.04);border:1px solid var(--green-dark);padding:1.5rem;margin:1.5rem 0;font-size:0.78rem;color:var(--bright);line-height:1.9;}
+    .highlight-box .label{color:var(--green);font-size:0.65rem;letter-spacing:0.2em;display:block;margin-bottom:0.5rem;}
+    .warning-box{background:rgba(255,32,32,0.04);border:1px solid rgba(255,32,32,0.15);border-left:3px solid var(--red);padding:1.5rem;margin:1.5rem 0;font-size:0.78rem;color:var(--text);line-height:1.9;}
+    .warning-box .label{color:var(--red);font-size:0.65rem;letter-spacing:0.2em;display:block;margin-bottom:0.5rem;}
+    .commit-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;margin:1.5rem 0;background:var(--border);border:1px solid var(--border);}
+    .commit-item{background:var(--bg2);padding:1.25rem;}
+    .commit-tag{color:var(--green);font-size:0.65rem;letter-spacing:0.15em;margin-bottom:0.5rem;display:block;}
+    .commit-title{color:var(--bright);font-size:0.78rem;margin-bottom:0.3rem;}
+    .commit-desc{color:var(--muted);font-size:0.72rem;line-height:1.7;}
+    .timeline{margin:1.5rem 0;}
+    .tl-item{display:flex;gap:1.25rem;margin-bottom:1.25rem;align-items:flex-start;}
+    .tl-dot{width:8px;height:8px;background:var(--green);border-radius:50%;flex-shrink:0;margin-top:0.35rem;}
+    .tl-content{font-size:0.76rem;line-height:1.8;}
+    .tl-title{color:var(--bright);margin-bottom:0.2rem;}
+    .tl-desc{color:var(--muted);}
+    .psy-callout{background:rgba(0,255,65,0.02);border-left:2px solid var(--green-dark);padding:1rem 1.25rem;margin:1.5rem 0;font-size:0.74rem;color:var(--muted);line-height:1.8;font-style:italic;}
+    .psy-callout cite{color:var(--green-dark);font-style:normal;font-size:0.67rem;display:block;margin-top:0.4rem;}
+    .cta-block{border:1px solid var(--green-dark);background:rgba(0,255,65,0.03);padding:2.5rem 2rem;text-align:center;margin:4rem 0;}
+    .cta-label{color:var(--muted);font-size:0.7rem;letter-spacing:0.15em;margin-bottom:0.75rem;}
+    .cta-headline{color:var(--bright);font-size:1rem;margin-bottom:0.5rem;letter-spacing:0.06em;}
+    .cta-sub{color:var(--muted);font-size:0.74rem;margin-bottom:1.75rem;line-height:1.8;}
+    .btn{display:inline-block;background:var(--green);color:#000;padding:0.85rem 2.25rem;font-family:'Share Tech Mono',monospace;font-size:0.78rem;letter-spacing:0.15em;font-weight:bold;text-decoration:none;cursor:crosshair;border:none;}
+    .btn:hover{background:var(--green-dim);}
+    .btn-note{color:var(--muted);font-size:0.65rem;margin-top:0.75rem;}
+    .about-form input,.about-form select{width:100%;background:#0d120d;border:1px solid #1a2a1a;color:#c8d8c8;font-family:'Share Tech Mono',monospace;font-size:0.75rem;padding:0.75rem 1rem;margin-bottom:0.6rem;outline:none;display:block;appearance:none;}
+    .about-form select{color:#556655;cursor:crosshair;}
+    .about-form{max-width:380px;margin:0 auto 1.5rem;text-align:left;}
+    .footnote{margin-top:4rem;padding-top:2rem;border-top:1px solid var(--border);color:var(--muted);font-size:0.67rem;line-height:1.9;}
+    footer{border-top:1px solid var(--border);padding:2rem;text-align:center;color:var(--muted);font-size:0.7rem;}
+    footer a{color:var(--green-dim);text-decoration:none;margin:0 0.6rem;}
+    footer a:hover{color:var(--green);}
+    @media(max-width:700px){
+      .commit-grid{grid-template-columns:1fr;}
+      .terms-row{flex-direction:column;}
+      .terms-item{border-right:none;border-bottom:1px solid var(--border);}
+      .hero h1{font-size:1.4rem;}
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">WW<span>SIREN</span></a>
+  <a href="/" class="nav-back">← BACK TO BASE</a>
+</nav>
+
+<div class="hero">
+  <div class="hero-eyebrow">// TERMS OF SERVICE // VERSION 1.0 // MARCH 2026 //</div>
+  <h1>A Fair Agreement.<br><em>Written to Be Read.</em></h1>
+  <p class="hero-sub">Most terms of service are designed to never be read. Ours are designed to be understood. What you see here is exactly what you are agreeing to — no hidden obligations, no buried exceptions.</p>
+  <div class="terms-row">
+    <div class="terms-item">
+      <span class="terms-val">$1.99</span>
+      <span class="terms-label">per month<br>total cost</span>
+    </div>
+    <div class="terms-item">
+      <span class="terms-val">0</span>
+      <span class="terms-label">hidden fees<br>or commitments</span>
+    </div>
+    <div class="terms-item">
+      <span class="terms-val">30d</span>
+      <span class="terms-label">advance notice<br>before any change</span>
+    </div>
+  </div>
+</div>
+
+<div class="toc">
+  <a href="#service" class="toc-link">01 // the service</a>
+  <a href="#subscription" class="toc-link">02 // subscription</a>
+  <a href="#our-commitments" class="toc-link">03 // our commitments</a>
+  <a href="#limitations" class="toc-link">04 // limitations</a>
+  <a href="#disclaimer" class="toc-link">05 // disclaimer</a>
+  <a href="#conduct" class="toc-link">06 // your conduct</a>
+  <a href="#changes" class="toc-link">07 // changes</a>
+  <a href="#governing" class="toc-link">09 // governing law</a>
+  <a href="#contact" class="toc-link">10 // contact</a>
+</div>
+
+<div class="container">
+
+  <div class="opening">
+    Research in behavioral economics demonstrates that the length and opacity of legal agreements is itself a form of manipulation — a design choice that exploits the cognitive cost of reading to extract consent that would not be freely given under conditions of full information.<br><br>
+    We reject that approach. <span class="key">These Terms are written at the level of clarity we would want if we were the subscriber.</span> They describe a simple, honest exchange: you pay $1.99 per month, we deliver high-significance global event alerts to your inbox. Everything else is detail about how that exchange works, what happens when it ends, and what we are each responsible for.
+    <span class="source">Bakos, Y., Marotta-Wurgler, F. &amp; Trossen, D.R. (2014). Does Anyone Read the Fine Print? Journal of Legal Studies, 43(1). — Documents that only 0.1% of users read standard EULAs, and the structural reasons why.</span>
+  </div>
+
+  <div class="section" id="service">
+    <div class="section-num">// 01</div>
+    <h2>WHAT WWsiren IS</h2>
+    <p>WWsiren is a subscription-based AI-assisted news monitoring and alert service. Our automated systems continuously monitor publicly available global news sources, apply AI-based significance classification, and deliver email notifications to subscribers when events meet our alert threshold.</p>
+    <p>The service is operated by <strong>KP Global Media Solutions LLP</strong>, a limited liability partnership registered in British Columbia, Canada (registration number LL0003025).</p>
+
+    <div class="highlight-box">
+      <span class="label">// WHAT WWsiren IS NOT //</span>
+      WWsiren is not an official emergency warning system. It is not affiliated with any government, international organization, or emergency services body. It is a private subscription service that provides informational alerts based on AI analysis of publicly available sources. It should never be your only source of information in a developing situation, and should always be combined with verification through official channels before taking significant action.
+    </div>
+
+    <p>To use the service, you must be at least 18 years of age and have the legal capacity to enter into a binding agreement in your jurisdiction. By subscribing, you confirm that both conditions are met.</p>
+  </div>
+
+  <div class="section" id="subscription">
+    <div class="section-num">// 02</div>
+    <h2>SUBSCRIPTION, BILLING, AND CANCELLATION</h2>
+    <p>WWsiren operates on a simple monthly subscription model. There are no annual commitments, no multi-tier pricing structures, and no add-ons.</p>
+
+    <div class="commit-grid">
+      <div class="commit-item">
+        <span class="commit-tag">// PRICE</span>
+        <div class="commit-title">$1.99 USD per month</div>
+        <div class="commit-desc">Billed automatically on the same date each month. No price changes without 30 days advance notice.</div>
+      </div>
+      <div class="commit-item">
+        <span class="commit-tag">// BILLING</span>
+        <div class="commit-title">Stripe — automatic renewal</div>
+        <div class="commit-desc">Payments processed securely by Stripe. Your subscription renews automatically unless cancelled.</div>
+      </div>
+      <div class="commit-item">
+        <span class="commit-tag">// BILLING</span>
+        <div class="commit-title">Stripe — automatic renewal</div>
+        <div class="commit-desc">Payments processed securely by Stripe. Your subscription renews automatically on the same date each month.</div>
+      </div>
+      <div class="commit-item">
+        <span class="commit-tag">// ACCESS</span>
+        <div class="commit-title">Active from payment confirmation</div>
+        <div class="commit-desc">Alert delivery begins immediately after successful payment confirmation. No activation delay.</div>
+      </div>
+    </div>
+
+    <div class="psy-callout">
+      Research by Thaler and Sunstein on choice architecture demonstrates that automatic renewal is a legitimate business practice that also creates a default bias toward continued subscription. We acknowledge this explicitly: your subscription renews automatically because that is what you agreed to at signup. Cancellation is always available and always straightforward. We do not obscure it.
+      <cite>— Thaler, R.H. &amp; Sunstein, C.R. (2008). Nudge: Improving Decisions About Health, Wealth, and Happiness. Yale University Press.</cite>
+    </div>
+  </div>
+
+  <div class="section" id="our-commitments">
+    <div class="section-num">// 03</div>
+    <h2>WHAT WE COMMIT TO DELIVERING</h2>
+    <p>A service agreement that only lists what the provider will not be responsible for is a contract designed for the provider, not the subscriber. We explicitly commit to what you should reasonably expect from WWsiren:</p>
+
+    <div class="commit-grid">
+      <div class="commit-item">
+        <span class="commit-tag">// SIGNAL QUALITY</span>
+        <div class="commit-title">Low-frequency, high-significance alerts</div>
+        <div class="commit-desc">We calibrate to deliver alerts that genuinely warrant your attention — not a daily digest, not a news summary. When you receive a WWsiren alert, it means our systems have classified the event as meeting a significant threshold.</div>
+      </div>
+      <div class="commit-item">
+        <span class="commit-tag">// SPEED</span>
+        <div class="commit-title">Delivery within the golden window</div>
+        <div class="commit-desc">Our target delivery latency is under 45 minutes from event classification. We aim to reach you before mainstream media saturation, when individual agency is greatest.</div>
+      </div>
+      <div class="commit-item">
+        <span class="commit-tag">// TRANSPARENCY</span>
+        <div class="commit-title">No hidden changes to service terms</div>
+        <div class="commit-desc">Any material change to what this service is, costs, or does will be communicated via email with at least 30 days advance notice. You will never be surprised by a change.</div>
+      </div>
+      <div class="commit-item">
+        <span class="commit-tag">// INTEGRITY</span>
+        <div class="commit-title">No advertiser influence on alerts</div>
+        <div class="commit-desc">WWsiren alert content is determined solely by our AI significance classification. No commercial arrangement with any party can influence what events trigger alerts or how they are described.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section" id="limitations">
+    <div class="section-num">// 04</div>
+    <h2>SERVICE LIMITATIONS — WHAT WE CANNOT GUARANTEE</h2>
+    <p>Honest terms of service require explicit acknowledgment of what the service cannot promise. The following limitations are not legal hedging — they are accurate descriptions of the inherent constraints of any AI-based monitoring system:</p>
+
+    <div class="highlight-box">
+      <span class="label">// COVERAGE</span>
+      WWsiren monitors publicly available international news sources. Events that are suppressed, misreported, or not yet covered by monitored sources may not trigger alerts. We do not have access to classified, governmental, or proprietary intelligence systems.
+    </div>
+
+    <div class="highlight-box">
+      <span class="label">// ACCURACY</span>
+      Our AI classification system produces probabilistic assessments, not certainties. Occasionally, events classified as alert-worthy will prove less significant than initially assessed (false positives), and some significant events may fall below our classification threshold (false negatives). We continuously calibrate to minimize both error types.
+    </div>
+
+    <div class="highlight-box">
+      <span class="label">// UPTIME</span>
+      We target maximum system availability but do not guarantee 100% uptime. Planned maintenance, infrastructure failures, or third-party service disruptions (including email delivery providers) may occasionally delay or prevent alert delivery.
+    </div>
+
+    <div class="highlight-box">
+      <span class="label">// EMAIL DELIVERY</span>
+      WWsiren delivers alerts to the email address provided at subscription. We are not responsible for alerts that are filtered as spam, blocked by email providers, or sent to an email address you no longer monitor. It is your responsibility to ensure your email address remains valid and monitored.
+    </div>
+  </div>
+
+  <div class="section" id="disclaimer">
+    <div class="section-num">// 05</div>
+    <h2>DISCLAIMER OF WARRANTIES AND LIMITATION OF LIABILITY</h2>
+
+    <div class="warning-box">
+      <span class="label">// IMPORTANT — PLEASE READ //</span>
+      WWsiren is provided "as is" and "as available." We make no warranties, express or implied, regarding the accuracy, completeness, timeliness, or fitness for any particular purpose of any alert or information delivered through the service.
+    </div>
+
+    <p>To the maximum extent permitted by applicable law, KP Global Media Solutions LLP, its operators, and affiliates shall not be liable for any direct, indirect, incidental, special, consequential, or punitive damages arising from:</p>
+    <p>— Reliance on any alert or information provided by the service<br>
+    — Any action or inaction taken based on a WWsiren alert<br>
+    — Failure to receive an alert due to technical failure, misclassification, or source limitations<br>
+    — Loss of data, revenue, opportunity, or personal wellbeing<br>
+    — Any third-party service failure affecting alert delivery</p>
+
+    <div class="psy-callout">
+      Research on decision-making under uncertainty consistently demonstrates that even imperfect early warning information significantly improves outcomes compared to no warning system at all — provided users understand the probabilistic nature of the information. We present this disclaimer not to diminish WWsiren's value, but because accurate calibration of expectations is itself a component of the service's usefulness. An over-confident user who treats every alert as certainty makes worse decisions than an appropriately calibrated one.
+      <cite>— Kahneman, D. (2011). Thinking, Fast and Slow. Farrar, Straus and Giroux. — On calibration, uncertainty, and the psychology of confidence in probabilistic judgments.</cite>
+    </div>
+
+    <p>Nothing in these Terms excludes or limits liability for death or personal injury caused by negligence, fraud, or any other liability that cannot be excluded by law.</p>
+  </div>
+
+  <div class="section" id="conduct">
+    <div class="section-num">// 06</div>
+    <h2>YOUR RESPONSIBILITIES AS A SUBSCRIBER</h2>
+    <p>The obligations we place on subscribers are minimal and reasonable:</p>
+
+    <div class="commit-grid">
+      <div class="commit-item">
+        <span class="commit-tag">// ACCURATE INFORMATION</span>
+        <div class="commit-title">Provide a valid, monitored email</div>
+        <div class="commit-desc">You are responsible for maintaining an accurate, functioning email address. We cannot deliver alerts to an invalid or unmonitored inbox.</div>
+      </div>
+      <div class="commit-item">
+        <span class="commit-tag">// AGE REQUIREMENT</span>
+        <div class="commit-title">18 years or older</div>
+        <div class="commit-desc">You confirm you are at least 18 years of age and have the legal capacity to enter into this agreement in your jurisdiction.</div>
+      </div>
+      <div class="commit-item">
+        <span class="commit-tag">// NO MISUSE</span>
+        <div class="commit-title">Personal use only</div>
+        <div class="commit-desc">Your subscription is for personal use. You may not resell, redistribute, or commercially exploit WWsiren alerts without our written consent.</div>
+      </div>
+      <div class="commit-item">
+        <span class="commit-tag">// VERIFICATION</span>
+        <div class="commit-title">Always verify before acting</div>
+        <div class="commit-desc">You acknowledge that WWsiren alerts are informational inputs, not authoritative instructions. You will verify significant information through official sources before taking major action.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section" id="changes">
+    <div class="section-num">// 07</div>
+    <h2>CHANGES TO THESE TERMS</h2>
+    <p>We may update these Terms from time to time. Our commitment to you regarding changes:</p>
+    <p><strong>Material changes</strong> — affecting price, service scope, liability, or subscriber rights — will be communicated via direct email at least 30 days before taking effect. Continued use after the effective date constitutes acceptance.</p>
+    <p><strong>Non-material changes</strong> — typographic corrections, clarifications, or contact updates — may be made without advance notice and are reflected in the version date at the top of this page.</p>
+  </div>
+
+  <div class="section" id="governing">
+    <div class="section-num">// 08</div>
+    <h2>GOVERNING LAW AND JURISDICTION</h2>
+    <p>These Terms are governed by and construed in accordance with the laws of the Province of British Columbia and the federal laws of Canada applicable therein, without regard to conflict of law principles.</p>
+    <p>Any dispute arising from these Terms or your use of WWsiren will be subject to the exclusive jurisdiction of the courts of British Columbia, Canada. If you are a consumer resident in the European Union or United Kingdom, you retain any mandatory consumer protection rights provided by the laws of your jurisdiction that cannot be waived by contract.</p>
+    <p>If any provision of these Terms is found to be unenforceable, the remaining provisions will continue in full force and effect.</p>
+  </div>
+
+  <div class="section" id="contact">
+    <div class="section-num">// 09</div>
+    <h2>CONTACT AND DISPUTE RESOLUTION</h2>
+    <p>We prefer resolution over litigation. If you have a concern, complaint, or dispute regarding WWsiren, please contact us directly before initiating any formal proceedings. In our experience, most issues can be resolved quickly and fairly through direct communication.</p>
+    <p>Contact: <strong><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="234a4d454c634853444f4c41424f4e46474a420d404c4e">[email&#160;protected]</a></strong><br>
+    Subject line: "Terms Inquiry" or "Dispute" as appropriate<br>
+    Response commitment: within 48 business hours</p>
+    <p style="margin-top:1rem;color:var(--muted);font-size:0.74rem;">KP Global Media Solutions LLP &nbsp;|&nbsp; 361–5307 Victoria Drive, Vancouver, BC, V5P 3V6, Canada</p>
+  </div>
+
+  <div class="cta-block">
+    <div class="cta-label">// YOU HAVE READ THE TERMS //</div>
+    <div class="cta-headline">A simple exchange, clearly stated.<br><em style="color:var(--green);font-style:normal;">$1.99/month. Cancel anytime. No surprises.</em></div>
+    <div class="cta-sub">The golden window does not wait for perfect information.<br>Neither should you.</div>
+    <div class="about-form">
+      <input type="text" id="terms-name" placeholder="// FIRST NAME">
+      <input type="email" id="terms-email" placeholder="// EMAIL ADDRESS">
+      <select id="terms-country">
+        <option value="" disabled selected>// COUNTRY</option>
+        <option>Afghanistan</option><option>Albania</option><option>Algeria</option><option>Argentina</option><option>Australia</option><option>Austria</option><option>Belgium</option><option>Brazil</option><option>Bulgaria</option><option>Canada</option><option>Chile</option><option>China</option><option>Colombia</option><option>Croatia</option><option>Czech Republic</option><option>Denmark</option><option>Egypt</option><option>Finland</option><option>France</option><option>Germany</option><option>Greece</option><option>Hungary</option><option>India</option><option>Indonesia</option><option>Iran</option><option>Ireland</option><option>Israel</option><option>Italy</option><option>Japan</option><option>Jordan</option><option>Kazakhstan</option><option>Kenya</option><option>Latvia</option><option>Lithuania</option><option>Malaysia</option><option>Mexico</option><option>Morocco</option><option>Netherlands</option><option>New Zealand</option><option>Nigeria</option><option>Norway</option><option>Pakistan</option><option>Peru</option><option>Philippines</option><option>Poland</option><option>Portugal</option><option>Romania</option><option>Russia</option><option>Saudi Arabia</option><option>Serbia</option><option>Singapore</option><option>Slovakia</option><option>Slovenia</option><option>South Africa</option><option>South Korea</option><option>Spain</option><option>Sweden</option><option>Switzerland</option><option>Thailand</option><option>Turkey</option><option>Ukraine</option><option>United Arab Emirates</option><option>United Kingdom</option><option>United States</option><option>Vietnam</option><option>Other</option>
+      </select>
+    </div>
+    <button onclick="handleTermsSubmit(event)" class="btn">ACTIVATE YOUR SIGNAL — $1.99/MO</button>
+    <div class="btn-note">Cancel anytime. No commitment beyond the current billing period.</div>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    function handleTermsSubmit(e){
+      e.preventDefault();
+      var n=document.getElementById('terms-name').value.trim();
+      var em=document.getElementById('terms-email').value.trim();
+      var c=document.getElementById('terms-country').value;
+      if(!n||!em||!c){alert('Please fill in all fields.');return;}
+      fetch('https://wwsiren.app.n8n.cloud/webhook/34fe87e5-b294-4e26-b2ac-1481d8270923',{
+        method:'POST',headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({name:n,email:em,country:c,source:'terms'})
+      }).catch(function(){});
+      window.location.href='https://buy.stripe.com/5kQbITcE9eyT8Ds9pD2sM02';
+    }
+    </script>
+  </div>
+
+  <div class="footnote">
+    <p>These Terms of Service are governed by the laws of British Columbia, Canada. Last updated: March 22, 2026. Version 1.0.</p>
+    <br>
+    <p>KP Global Media Solutions LLP &nbsp;|&nbsp; 361–5307 Victoria Drive, Vancouver, BC, V5P 3V6, Canada &nbsp;|&nbsp; <a href="/cdn-cgi/l/email-protection#4f262129200f243f2823202d2e23222a2b262e612c2022"><span class="__cf_email__" data-cfemail="11787f777e517a61767d7e73707d7c747578703f727e7c">[email&#160;protected]</span></a></p>
+    <br>
+    <p>© 2026 KP Global Media Solutions LLP &nbsp;|&nbsp; <a href="/privacy.html">Privacy Policy</a> &nbsp;|&nbsp; <a href="/contact.html">Contact</a> &nbsp;|&nbsp; <a href="/about.html">th
